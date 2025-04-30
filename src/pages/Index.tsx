@@ -2,11 +2,14 @@
 import { useState, useEffect } from "react";
 import DiaryForm from "@/components/DiaryForm";
 import DiaryEntries from "@/components/DiaryEntries";
+import EditDiaryForm from "@/components/EditDiaryForm";
 import { DiaryEntry } from "@/types/diary";
 import { saveDiaryEntries, getDiaryEntries } from "@/utils/storage";
 
 const Index = () => {
   const [entries, setEntries] = useState<DiaryEntry[]>([]);
+  const [editingEntry, setEditingEntry] = useState<DiaryEntry | null>(null);
+  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
   useEffect(() => {
     // Load entries from local storage
@@ -18,6 +21,26 @@ const Index = () => {
     const updatedEntries = [newEntry, ...entries];
     setEntries(updatedEntries);
     saveDiaryEntries(updatedEntries);
+  };
+
+  const handleEditEntry = (entry: DiaryEntry) => {
+    setEditingEntry(entry);
+    setIsEditDialogOpen(true);
+  };
+
+  const handleUpdateEntry = (updatedEntry: DiaryEntry) => {
+    const updatedEntries = entries.map(entry => 
+      entry.id === updatedEntry.id ? updatedEntry : entry
+    );
+    setEntries(updatedEntries);
+    saveDiaryEntries(updatedEntries);
+    setEditingEntry(null);
+    setIsEditDialogOpen(false);
+  };
+
+  const closeEditDialog = () => {
+    setIsEditDialogOpen(false);
+    setEditingEntry(null);
   };
 
   return (
@@ -32,8 +55,15 @@ const Index = () => {
         
         <div className="pt-10">
           <h2 className="text-2xl font-semibold text-diary-primary mb-6">My Memories</h2>
-          <DiaryEntries entries={entries} />
+          <DiaryEntries entries={entries} onEdit={handleEditEntry} />
         </div>
+        
+        <EditDiaryForm 
+          entry={editingEntry}
+          open={isEditDialogOpen}
+          onClose={closeEditDialog}
+          onSave={handleUpdateEntry}
+        />
       </div>
     </div>
   );

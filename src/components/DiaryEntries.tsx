@@ -3,12 +3,15 @@ import React from "react";
 import { DiaryEntry } from "@/types/diary";
 import { Card, CardContent } from "@/components/ui/card";
 import { format } from "date-fns";
+import { Button } from "@/components/ui/button";
+import { Pencil } from "lucide-react";
 
 interface DiaryEntriesProps {
   entries: DiaryEntry[];
+  onEdit: (entry: DiaryEntry) => void;
 }
 
-const DiaryEntries: React.FC<DiaryEntriesProps> = ({ entries }) => {
+const DiaryEntries: React.FC<DiaryEntriesProps> = ({ entries, onEdit }) => {
   // Sort entries by date (newest first)
   const sortedEntries = [...entries].sort((a, b) => 
     new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -34,12 +37,21 @@ const DiaryEntries: React.FC<DiaryEntriesProps> = ({ entries }) => {
           >
             <CardContent className="p-0">
               <div className={`grid grid-cols-1 md:grid-cols-2 ${isEven ? '' : 'md:flex-row-reverse'}`}>
-                <div className={`h-64 md:h-auto ${isEven ? 'md:order-1' : 'md:order-2'}`}>
+                <div className={`h-64 md:h-auto ${isEven ? 'md:order-1' : 'md:order-2'} relative`}>
                   <img 
                     src={entry.imageUrl} 
                     alt={`Diary entry for ${format(entry.date, "PPP")}`} 
                     className="w-full h-full object-cover"
                   />
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="absolute top-2 right-2 bg-white/80 hover:bg-white"
+                    onClick={() => onEdit(entry)}
+                  >
+                    <Pencil className="h-4 w-4 mr-1" />
+                    Edit
+                  </Button>
                 </div>
                 
                 <div className={`p-6 flex flex-col justify-between bg-white ${isEven ? 'md:order-2' : 'md:order-1'}`}>
