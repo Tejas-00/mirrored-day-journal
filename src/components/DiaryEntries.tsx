@@ -4,14 +4,15 @@ import { DiaryEntry } from "@/types/diary";
 import { Card, CardContent } from "@/components/ui/card";
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
-import { Pencil } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
 
 interface DiaryEntriesProps {
   entries: DiaryEntry[];
   onEdit: (entry: DiaryEntry) => void;
+  onDelete: (id: string) => void;
 }
 
-const DiaryEntries: React.FC<DiaryEntriesProps> = ({ entries, onEdit }) => {
+const DiaryEntries: React.FC<DiaryEntriesProps> = ({ entries, onEdit, onDelete }) => {
   // Sort entries by date (newest first)
   const sortedEntries = [...entries].sort((a, b) => 
     new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -43,15 +44,26 @@ const DiaryEntries: React.FC<DiaryEntriesProps> = ({ entries, onEdit }) => {
                     alt={`Diary entry for ${format(entry.date, "PPP")}`} 
                     className="w-full h-full object-cover"
                   />
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="absolute top-2 right-2 bg-white/80 hover:bg-white"
-                    onClick={() => onEdit(entry)}
-                  >
-                    <Pencil className="h-4 w-4 mr-1" />
-                    Edit
-                  </Button>
+                  <div className="absolute top-2 right-2 flex gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="bg-white/80 hover:bg-white"
+                      onClick={() => onEdit(entry)}
+                    >
+                      <Pencil className="h-4 w-4 mr-1" />
+                      Edit
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="bg-white/80 hover:bg-white text-red-500 hover:text-red-700 hover:border-red-300"
+                      onClick={() => onDelete(entry.id)}
+                    >
+                      <Trash2 className="h-4 w-4 mr-1" />
+                      Delete
+                    </Button>
+                  </div>
                 </div>
                 
                 <div className={`p-6 flex flex-col justify-between bg-white ${isEven ? 'md:order-2' : 'md:order-1'}`}>
