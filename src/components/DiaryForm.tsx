@@ -8,9 +8,9 @@ import { format } from "date-fns";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
-import { DiaryEntry } from "@/types/diary";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "sonner";
+import { DiaryEntry } from "@/types/diary";
 
 interface DiaryFormProps {
   onSave: (entry: DiaryEntry) => void;
