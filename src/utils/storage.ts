@@ -54,8 +54,3 @@ export function exportDiaryEntries(): void {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
-
-// New function to clear all diary entries
-export function clearDiaryEntries(): void {
-  localStorage.removeItem(STORAGE_KEY);
-}

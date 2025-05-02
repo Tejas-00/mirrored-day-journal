@@ -8,13 +8,11 @@ import { DiaryEntry } from "@/types/diary";
 import { 
   saveDiaryEntries, 
   getDiaryEntries, 
-  exportDiaryEntries, 
-  clearDiaryEntries
+  exportDiaryEntries
 } from "@/utils/storage";
 import { useToast } from "@/hooks/use-toast";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { Download, Trash2, Database } from "lucide-react";
+import { Download, Database } from "lucide-react";
 
 const Index = () => {
   const [entries, setEntries] = useState<DiaryEntry[]>([]);
@@ -140,16 +138,6 @@ const Index = () => {
     });
   };
 
-  const handleClearData = () => {
-    clearDiaryEntries();
-    setEntries([]);
-    setFilteredEntries([]);
-    toast({
-      title: "Data cleared",
-      description: "All diary entries have been deleted from local storage.",
-    });
-  };
-
   return (
     <div className="min-h-screen bg-diary-background">
       <div className="container py-10 space-y-10">
@@ -185,7 +173,7 @@ const Index = () => {
               <h3 className="text-xl font-semibold text-diary-primary mb-4">Manage Your Data</h3>
               <p className="text-gray-600 mb-4">
                 Your diary entries are stored securely in your browser's local storage. 
-                From here you can export or clear all your data.
+                From here you can export your data.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button
@@ -197,34 +185,6 @@ const Index = () => {
                   <Download className="h-4 w-4" />
                   Export All Data
                 </Button>
-                
-                <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <Button 
-                      variant="outline" 
-                      className="flex items-center gap-2 text-red-500 hover:text-red-700 hover:bg-red-50"
-                      disabled={entries.length === 0}
-                    >
-                      <Trash2 className="h-4 w-4" />
-                      Clear All Data
-                    </Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent>
-                    <AlertDialogHeader>
-                      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                      <AlertDialogDescription>
-                        This action will permanently delete all your diary entries from local storage.
-                        This action cannot be undone.
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <AlertDialogCancel>Cancel</AlertDialogCancel>
-                      <AlertDialogAction onClick={handleClearData} className="bg-red-500 hover:bg-red-600">
-                        Yes, delete everything
-                      </AlertDialogAction>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialog>
               </div>
               
               <div className="mt-4 p-4 bg-gray-50 rounded-md border border-gray-200">
