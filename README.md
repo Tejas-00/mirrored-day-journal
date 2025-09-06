@@ -1,73 +1,72 @@
-# Welcome to your Lovable project 
+# Mirrored Day Journal
 
-## Project info
+Mirrored Day Journal is a personal journaling application designed to help users reflect on their daily experiences, track moods, and foster self-growth. With a clean interface and intuitive features, this project is perfect for anyone looking to maintain a regular journaling habit.
 
-**URL**: https://lovable.dev/projects/3dc61058-a242-470c-8748-918a2042f701
+## Features
 
-## How can I edit this code?
+- **Daily Journal Entries:** Write, edit, and delete daily reflections.
+- **Mood Tracking:** Tag entries with your current mood for easy visualization over time.
+- **Search & Filter:** Find past entries by date or keyword.
+- **Data Privacy:** Your journal entries are stored securely.
+- **Responsive Design:** Works seamlessly on desktop and mobile devices.
 
-There are several ways of editing your application.
+## Installation
 
-**Use Lovable**
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Tejas-00/mirrored-day-journal.git
+   cd mirrored-day-journal
+   ```
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/3dc61058-a242-470c-8748-918a2042f701) and start prompting.
+2. **Install dependencies:**
+   ```bash
+   # If using npm
+   npm install
+   # Or if using yarn
+   yarn install
+   ```
 
-Changes made via Lovable will be committed automatically to this repo.
+3. **Start the development server:**
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
 
-**Use your preferred IDE**
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to use the app.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Usage
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Create a new journal entry by clicking the "New Entry" button.
+- Select your mood and write about your day.
+- Browse previous entries by using the search or filter options.
+- Edit or delete entries as needed.
 
-Follow these steps:
+## Technologies Used
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- **Frontend:** (Add framework/library here, e.g., React, Vue, or plain HTML/CSS/JS)
+- **Backend:** (If applicable, e.g., Node.js, Express, etc.)
+- **Database:** (If applicable, e.g., MongoDB, SQLite, etc.)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Contributing
 
-# Step 3: Install the necessary dependencies.
-npm i
+Contributions are welcome! Please follow these steps:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Commit your changes (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Open a Pull Request.
 
-**Edit a file directly in GitHub**
+## License
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+This project is licensed under the [MIT License](LICENSE).
 
-**Use GitHub Codespaces**
+## Author
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Made with ❤️ by [Tejas-00](https://github.com/Tejas-00)
 
-## What technologies are used for this project?
+## Acknowledgements
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/3dc61058-a242-470c-8748-918a2042f701) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- Inspiration from journaling and mindfulness apps.
+- Thanks to contributors and the open source community!
